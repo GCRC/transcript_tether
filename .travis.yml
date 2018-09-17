@@ -10,7 +10,8 @@ deploy:
   skip_cleanup: true
   api_key:
     secure: m4gPuTVsxoMCL90p3YC2bo1Ug1uICjXVerJUKiv1kyavobnrSEQ6cUEn4YPPSxZKsz8gNukMynVbyhQXIX81xLu3I/BX+db5wz5a82u9jQeT61nFnDOCvcO/lrbHnHA3Kp71ll9VutLEMOCJWrN1UYG/XYbkVw78AQkiJmeu8rXUdDh8ANKp8eo6sYpPA/SCzHxfpUXZ8q/SUWWBu9r07pDiWxySOOGQ2FrI9+AzxsNbPovcMcI9Gz+/zi60Ae10OJAdzdJWGu2dFtV4cC+7t95xnTHRnX0GSGH0SQdiaP+ituuwzamHkG7je9YKq2RG0Y1UbiQecxU9R8EGoSjYom+5/L8GXragEY3PH1IIOhQ62jFgqrSht1dvN7fPGDEZWtxAS7J8aySbHjrYxsSIMyajhGWmP+dJH1E56ZZRjza38ASWo5JYHU4GuewbKoG4TI5bU6ii4v/tGWuLnGJ+bX586ggZamIIjOE+6MxcvJIY22qVcoozFL8fi1wbbDYZjkCA8mz+xY/ioFIgf3HZZoGyonP6QkY7wUH9Zm8pA4dsfS84V7DuJn9vA3n+TwHERCOYbd+dY+2D/yoJejfbHwMzk71AHrOj0HXtFbIBRVNXz09KAjfnTBZQgs6wPfXIt+PUNWm7uDEI9tN2PMk6KeHdT23q4xGjj/uy/f8/PsY=
-  file: build/libs/*
+  file: build/libs/*.jar
+  file_glob: true
   on:
     repo: GCRC/transcript_tether
     tags: true
