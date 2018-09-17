@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'youtube-caption'
+rootProject.name = 'transcript_tether'
