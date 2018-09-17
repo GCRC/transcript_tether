@@ -6,12 +6,12 @@ Cross-platform java library and command-line utility to generate a subtitle file
 # Obtaining
 Java
 [Java SE Runtime Environment 8 [Downloads](http://www.oracle.com/technetwork/java/javase/jre8-downloads-2133155.html)]<br>
-[Download the latest .jar file](https://github.com/GCRC/transcript_tether/releases)
+Download the latest [transcript_tether-x.y.z.jar](https://github.com/GCRC/transcript_tether/releases) file.
 
 Windows 10 Note: [Setting JAVA_HOME environment variables](https://www.mkyong.com/java/how-to-set-java_home-on-windows-10/)
 
 # Usage
-> java -jar transcript_tether-<version>.jar<br>
+> java -jar transcript_tether-x.y.z.jar<br>
 > -c,    --credential <arg>    Provide credential file for google api.<br>
 > -l,--language <arg>          (Optional) Indicate the language used in the video [en|fr].<br>
 > -o,--output_path <arg>       (Optional) The output directory for [target].srt, the default place is the current folder.<br>
