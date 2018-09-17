@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GCRC/transcript_tether.svg?branch=master)](https://travis-ci.org/GCRC/transcript_tether)
+[![Build Status](https://travis-ci.com/GCRC/transcript_tether.svg?branch=master)](https://travis-ci.com/GCRC/transcript_tether)
 
 
 # transcript_tether
