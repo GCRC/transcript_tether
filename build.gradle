@@ -4,7 +4,7 @@ apply plugin: 'application'
 mainClassName = 'ca.carleton.gcrc.tetherScript.Command'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-version = '0.1.0'
+version = '1.0.1'
 
 task exec (type: Jar) {
 	manifest {
