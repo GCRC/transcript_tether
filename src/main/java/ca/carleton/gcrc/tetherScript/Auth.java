@@ -31,6 +31,7 @@ import java.util.List;
  */
 public class Auth {
 
+	
     /**
      * Define a global instance of the HTTP transport.
      */
@@ -56,6 +57,8 @@ public class Auth {
      */
     public static Credential authorize( String client_secret_json, String credentialDatastore) throws IOException {
 
+    	final java.util.logging.Logger buggyLogger = java.util.logging.Logger.getLogger(FileDataStoreFactory.class.getName()); 
+    	buggyLogger.setLevel(java.util.logging.Level.SEVERE);
         // Load client secrets.
     	if(!isSameCredentialJson(client_secret_json, ApiExample.CREDENTIALFILE_INTERNAL)) {
      

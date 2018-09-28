@@ -24,9 +24,9 @@ java -jar transcript_tether.jar [-c <arg>] [-i <arg>] [-l <arg>] [-o <arg>] -t <
 ```
 Examples:
 ```
-java -jar transcript_tether-x.y.z.jar -v 'test1.mp4' -t 'test1.txt' -c 'client_secret.json'
-java -jar transcript_tether-x.y.z.jar -v 'test2.mp4' -t 'test2.txt'
-java -jar transcript_tether-x.y.z.jar -i 'youtubeID' -t 'test3.txt'
+java -jar transcript_tether-x.y.z.jar -v test1.mp4 -t test1.txt -c client_secret.json
+java -jar transcript_tether-x.y.z.jar -v test2.mp4 -t test2.txt
+java -jar transcript_tether-x.y.z.jar -i youtubeID -t test3.txt
 ```
 
 ## FAQ
