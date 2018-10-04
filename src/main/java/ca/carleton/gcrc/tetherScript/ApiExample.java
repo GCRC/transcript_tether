@@ -140,7 +140,9 @@ public class ApiExample {
     			System.out.println(CREDENTIAL_NOTIFY);
     			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     			ApiExample.openInBrowser("https://console.cloud.google.com/apis/credentials");
+    			
     			System.exit(1);
+    			
     		} else {
     			CREDENTIALFILE = CREDENTIALFILE_INTERNAL;
     			setSAME_USER(true);
@@ -150,7 +152,7 @@ public class ApiExample {
     		CREDENTIALFILE = credential;
     		
     	}
-       // YouTube youtube = getYouTubeService();
+      
     	if(hasUploadedVideoID) {
     		if(videoId.length >0 && videoId[0] != null)
     			EXISTINGVIDEOID = videoId[0];
@@ -181,7 +183,7 @@ public class ApiExample {
 		}
         try {
             YouTube youtube = getYouTubeService();
-            VideoRecordsDb videorecords =  VideoRecordsDb.initialDb();
+            VideoRecordsDb videorecords =  VideoRecordsDb.getDbInstance();
             String VRECORD = videorecords.dupliatedVideoExisting(VIDEOFILE);
             if(!hasUploadedVideoID  )  {
             	if(VRECORD.isEmpty()) {
@@ -189,14 +191,15 @@ public class ApiExample {
             		vidp.execute();
             		VIDEOID = vidp.getVideoId();
             		System.out.println("The new VideoId is: "+ VIDEOID);
-            		videorecords.addNewVideoRecord(VIDEOFILE, VIDEOID);
+            		System.out.println("whether or not " + videorecords.addNewVideoRecord(VIDEOFILE, VIDEOID));
             	} else {
             		
             		System.out.println("/////////////////////////////////////////////////////"
-            				+"/n"
+            				+"\n\n"
             				+ "The video seems hava been uploaded before"
-            				+ "Trying to reuse old ... "+ "https://www.youtube.com/watch?v=" + VRECORD
-            				+ "/n"
+            				+ "Trying to reuse old ... \n"
+            				+ "https://www.youtube.com/watch?v=" + VRECORD
+            				+ "\n\n"
             		        +  "/////////////////////////////////////////////////////");
             		//TODO add existing video id checking
             		VIDEOID = VRECORD;
@@ -287,7 +290,7 @@ public class ApiExample {
            
             openInBrowser(finalTuneUrl);
         } catch (GoogleJsonResponseException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             System.err.println("HTTP ERROR CODE: "+e.getStatusCode());
             switch (e.getStatusCode()) {
             	case 401:
@@ -310,7 +313,7 @@ public class ApiExample {
             		}
             }
         } catch (Throwable t) {
-            //t.printStackTrace();
+            t.printStackTrace();
         }
     }
     

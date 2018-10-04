@@ -40,9 +40,9 @@ public class Command {
 		//options.addOption(recursiveTethering);
 		String header = "Transcript tethering tool using YouTube APIs. \n\n";
 		String footer = "Examples: \n"
-				+ "java -jar transcript_tether-x.y.z.jar -v 'test1.mp4' -t 'test1.txt' -c 'client_secret.json'\n"
-				+ "java -jar transcript_tether-x.y.z.jar -v 'test2.mp4' -t 'test2.txt'\n"
-				+ "java -jar transcript_tether-x.y.z.jar -i 'youtubeID' -t 'test3.txt'\n\n";
+				+ "java -jar transcript_tether-x.y.z.jar -v test1.mp4 -t test1.txt -c client_secret.json\n"
+				+ "java -jar transcript_tether-x.y.z.jar -v test2.mp4 -t test2.txt\n"
+				+ "java -jar transcript_tether-x.y.z.jar -i youtubeID -t test3.txt\n\n";
 		
 		
 		HelpFormatter formatter = new HelpFormatter();
