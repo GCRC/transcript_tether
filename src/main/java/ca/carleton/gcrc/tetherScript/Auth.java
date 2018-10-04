@@ -60,10 +60,13 @@ public class Auth {
     	final java.util.logging.Logger buggyLogger = java.util.logging.Logger.getLogger(FileDataStoreFactory.class.getName()); 
     	buggyLogger.setLevel(java.util.logging.Level.SEVERE);
         // Load client secrets.
-    	if(!isSameCredentialJson(client_secret_json, ApiExample.CREDENTIALFILE_INTERNAL)) {
+    	if(!isSameCredentialJson(client_secret_json, ApiExample.getCredentialfileInternal())) {
      
     		overrideOldInternalCred(ApiExample.CREDENTIALFILE_INTERNAL, client_secret_json);
     		
+    	} else {
+    		
+    		ApiExample.setSAME_USER(true);
     	}
     	
     	Reader clientSecretReader = new InputStreamReader(new FileInputStream(ApiExample.CREDENTIALFILE_INTERNAL ));
@@ -88,7 +91,7 @@ public class Auth {
     }
     
     
-    private static boolean isSameCredentialJson(String l_json, String r_json) throws IOException {
+    protected static boolean isSameCredentialJson(String l_json, String r_json) throws IOException {
     	try {
     		File lfile = new File(l_json);
     		File rfile = new File(r_json);

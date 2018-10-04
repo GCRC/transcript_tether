@@ -31,6 +31,11 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -38,7 +43,9 @@ import java.util.List;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 public class ApiExample {
 
 	
@@ -74,7 +81,7 @@ public class ApiExample {
     protected static String OUTPUTFILE = null;
     protected static String CREDENTIALFILE = null;
     protected static final String CREDENTIALFILE_INTERNAL =  System.getProperty("user.home") + "/.secret/client_secret_other.json";
-    
+    protected static boolean SAME_USER = false;
 
     /** Global instance of the scopes required by this quickstart.
      *
@@ -136,6 +143,7 @@ public class ApiExample {
     			System.exit(1);
     		} else {
     			CREDENTIALFILE = CREDENTIALFILE_INTERNAL;
+    			setSAME_USER(true);
     		}
     		
     	} else {
@@ -159,8 +167,9 @@ public class ApiExample {
     	String outputFileDir = outputPath;
 		if(outputPath.charAt(outputPath.length()-1) != '/')
 			outputFileDir += '/';
-		if(!hasUploadedVideoID) {
+		if(!hasUploadedVideoID ) {
 			VIDEOFILE = videoFile;
+			
 			String tmpfile = new File(VIDEOFILE).getName();
 		
 			String inputNameWithoutExt = tmpfile.lastIndexOf('.')>0?  tmpfile.substring(0,tmpfile.lastIndexOf('.')) : tmpfile ;
@@ -172,12 +181,27 @@ public class ApiExample {
 		}
         try {
             YouTube youtube = getYouTubeService();
-           
-            if(!hasUploadedVideoID) {
-            	VideoProcessor vidp = new VideoProcessor(youtube);
-            	vidp.execute();
-            	VIDEOID = vidp.getVideoId();
-            	System.out.println("VideoId is: "+ VIDEOID);
+            VideoRecordsDb videorecords =  VideoRecordsDb.initialDb();
+            String VRECORD = videorecords.dupliatedVideoExisting(VIDEOFILE);
+            if(!hasUploadedVideoID  )  {
+            	if(VRECORD.isEmpty()) {
+            		VideoProcessor vidp = new VideoProcessor(youtube);
+            		vidp.execute();
+            		VIDEOID = vidp.getVideoId();
+            		System.out.println("The new VideoId is: "+ VIDEOID);
+            		videorecords.addNewVideoRecord(VIDEOFILE, VIDEOID);
+            	} else {
+            		
+            		System.out.println("/////////////////////////////////////////////////////"
+            				+"/n"
+            				+ "The video seems hava been uploaded before"
+            				+ "Trying to reuse old ... "+ "https://www.youtube.com/watch?v=" + VRECORD
+            				+ "/n"
+            		        +  "/////////////////////////////////////////////////////");
+            		//TODO add existing video id checking
+            		VIDEOID = VRECORD;
+            	}
+            	
             } else {
             	VIDEOID = EXISTINGVIDEOID;
             	System.out.println("The existing VideoId is: "+ VIDEOID);
@@ -289,6 +313,7 @@ public class ApiExample {
             //t.printStackTrace();
         }
     }
+    
     private static void openInBrowser(String url) {
     	
     	try {
@@ -323,6 +348,21 @@ public class ApiExample {
     		ES
     		
     		
-    };
+    }
+	static String getCredentialfileInternal() {
+		return CREDENTIALFILE_INTERNAL;
+	}
+
+
+
+	static boolean isSAME_USER() {
+		return SAME_USER;
+	}
+
+
+
+	static void setSAME_USER(boolean sAME_USER) {
+		SAME_USER = sAME_USER;
+	};
 }
 
