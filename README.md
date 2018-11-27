@@ -29,7 +29,7 @@ java -jar transcript_tether-x.y.z.jar -v test2.mp4 -t test2.txt
 java -jar transcript_tether-x.y.z.jar -i youtubeID -t test3.txt
 ```
 
-## FAQ
+## Additional Info
 1. First, to install and deploy the software, you need to enable the youtube Data API v3 "https://console.developers.google.com/apis/library/youtube.googleapis.com". 
 
 2. Second, at the first execution, the program will prompt up for you to create the OAUTH2.0 json file. Just follow the process, download the secret.json file and rerun the program with "-c {secret.json}". The json file will be cached to the user.home folder, so that you don't need to enter the secret info at next time.
@@ -46,3 +46,9 @@ Use git to clone the repository and run:
 > gradle exec
 
 The executable is located inside {PROJECT_FOLDER}/build/libs/
+
+# Licensing
+
+transcript_tether tool is copyright 2018 Geomatics and Cartographic Research Centre and licensed under the MIT license. See the LICENSE file for details.
+
+Additional libraries are included at build time. Google APIs Client Library For Java, Google APIs Client Library For Java, google-api-services-youtube:v3, and Apache Commons CLI are licensed under the Apache 2.0 License (https://www.apache.org/licenses/LICENSE-2.0.html)
