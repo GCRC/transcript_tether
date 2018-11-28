@@ -9,7 +9,7 @@ deploy:
   provider: releases
   skip_cleanup: true
   api_key:
-    secure: $GH_TOKEN
+    secure: JaK/TKV+i650QbLb1n/Vk63CzlTMCANLf5QUetUmNByZi2kk78abw+Oj7xs/VH0Pc4YRqaLbZpW7yvyemrNEyEfWJDGwaZyxmnrotajBaCSv7cnIllVkYczJ38GIplFFmUq4umFHj8g3QHb1k6jAL0Uq3yFR5uwlhFCTriv5hevZtmBy6CVZjdHU/Idv2OVsairu5XCMeJU4NQbhhL7AiKb81gZ/59ND4rA0GNoflPVoniK8VzLgezzAwjHp7C9NP1lbnKiQ5Etm5pVzPb3oGSKEKJ+u4/m8ogrx3DzIjOFCPxEZngKd83bxJdl2zH0FuTeCMihkQSGu+rz1eNMtT0lJ7gxY75CdiM8hJkcL98LmG0Ux/JJ4TNTedTWFsEuJUmkd+K7hpDwgQzi6idirRUjeAnPuNYeFjzS8XJg5QKicqB8/0vofRqLUSVoRvZHIaYmx1M4HWWw+4yEA0ieDyj6jT+25X6grX685ddYsSlXPlgn08V+XLCPy3mP39r8r6KZtoe7H6fJApJ0KoF3K2VRf8yKkflr2IIJ+3uocdPZDN35UUg6oIzBNO7sqF4WGlcMS1Z9GBMv1Y5EHWa6Vul23NvfuD90qo2BoNhAAsO7W/Y0CBtEXsI/cm8ZMmQtch0ODoz0HwVDinGQnGyLJL/VotjoFBj1j5Xw1ampBJVc=
   file: build/libs/transcript_tether-*.jar
   file_glob: true
   on:
